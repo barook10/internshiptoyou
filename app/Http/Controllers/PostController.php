@@ -68,6 +68,7 @@ class PostController extends Controller
     public function update(Post $post)
     {
         $attributes = request()->validate([
+            'title'=> 'required',
             'slug' => ['required', Rule::unique('posts', 'slug')->ignore($post->id)],
             'excerpt' => 'required',
             'body' => 'required',
